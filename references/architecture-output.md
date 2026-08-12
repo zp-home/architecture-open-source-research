@@ -1,30 +1,30 @@
-# Architecture Output Contract
+# 架构输出约定
 
-## Per-module template
+## 每个模块的模板
 
-For each module, document:
+每个模块说明：
 
-1. Purpose and explicit non-goals.
-2. Inputs and outputs, including event/API schemas and schema ownership.
-3. State model: storage, ordering, idempotency key, replay/recovery, retention.
-4. Methods: critical algorithms, retry/time-out policy, concurrency, and resource limits.
-5. Open-source basis: URL/ref, decision, verified reusable pieces, required extensions.
-6. Failure modes: stale data, duplication, outage, overload, corrupted state, and safe behavior.
-7. Security/governance: identities, secrets, permissions, audit record, approval gates.
-8. Tests and acceptance: unit/integration/replay/load/chaos checks plus measurable thresholds.
+1. 目的和明确非目标。
+2. 输入输出，包括事件/API 模式和模式所有权。
+3. 状态模型：存储、顺序、幂等键、回放/恢复和保留策略。
+4. 方法：关键算法、重试/超时策略、并发和资源限制。
+5. 开源基础：URL/ref、复用决定、已核验可复用部分和必需扩展。
+6. 故障模式：陈旧数据、重复、故障、过载、状态损坏及安全行为。
+7. 安全/治理：身份、密钥、权限、审计记录和审批门槛。
+8. 测试和验收：单元、集成、回放、负载、混沌检查及可测阈值。
 
-## Futures/RL module order
+## 期货/RL 模块顺序
 
-1. Data adapter and immutable event store.
-2. Reference data and exchange-rule service.
-3. Data-quality and feature service.
-4. Event replay, order book, fill and latency simulator.
-5. Baselines and experiment tracking.
-6. RL environment, trainer, evaluator, and model registry.
-7. Real-time feature/inference service.
-8. Risk gateway, execution adapter, account/order state.
-9. Shadow, paper trading, observability, audit, rollback, and human control.
+1. 数据适配器和不可变事件存储。
+2. 参考数据和交易规则服务。
+3. 数据质量和特征服务。
+4. 事件回放、订单簿、成交和延迟模拟器。
+5. 基准策略和实验跟踪。
+6. RL 环境、训练器、评估器和模型注册。
+7. 实时特征/推理服务。
+8. 风险网关、执行适配器、账户/订单状态。
+9. 影子、模拟盘、可观测性、审计、回滚和人工控制。
 
-## Promotion gates
+## 晋级门槛
 
-Define a stop condition at every stage. A model must not advance from historical replay to shadow mode, shadow mode to paper trading, or paper trading to limited capital without passing chronology, cost, fill, latency, risk, reproducibility, and operational-recovery checks.
+每个阶段定义停止条件。模型必须通过时间顺序、成本、成交、延迟、风险、可复现性和运维恢复检查，才能从历史回放进入影子模式、从影子进入模拟盘、再从模拟盘进入有限资金。

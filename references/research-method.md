@@ -1,32 +1,32 @@
-# Repository Research Method
+# 仓库研究方法
 
-## Candidate collection
+## 收集候选
 
-Search each capability separately. Use precise terms such as `event driven backtest`, `limit order book simulator`, `RL experiment tracker`, `model registry`, `risk gateway`, and the target language/runtime. Search a local-language platform such as Gitee only when it is relevant to the deployment ecosystem or target integration.
+对每项能力分别检索。使用精确术语，例如 `event driven backtest`、`limit order book simulator`、`RL experiment tracker`、`model registry`、`risk gateway` 和目标语言/运行时。仅在目标部署生态或集成需要时检索 Gitee。
 
-Collect a short list first; then read sources. A candidate without a readable license, release/commit history, or clear ownership cannot be an adoption recommendation.
+先得到短名单，再阅读来源。没有可读许可证、发布/提交历史或清晰所有权的候选不能作为“采用”建议。
 
-## Evidence fields
+## 证据字段
 
-Capture these fields for every shortlisted repository:
+每个入围仓库记录以下字段：
 
-| Field | Evidence needed |
+| 字段 | 所需证据 |
 | --- | --- |
-| Identity | Canonical URL, owner, default branch, release/ref considered |
-| License | Repository LICENSE file and notable dependency restrictions |
-| Scope | Verified supported workload, data model, language, runtime, and extension points |
-| Maintenance | Latest release/commit, issue/PR activity, bus-factor clues |
-| Quality | Tests, CI, examples, benchmarks, docs, security process |
-| Operations | Packaging, deployment, configuration, state/recovery, telemetry |
-| Fit | Latency, data, regulatory, security, and team-fit constraints |
-| Decision | Adopt, extend, borrow patterns, research only, or reject |
+| 身份 | 规范 URL、所有者、默认分支、评估的发布/ref |
+| 许可证 | 仓库 LICENSE 文件和重要依赖限制 |
+| 范围 | 已核验的工作负载、数据模型、语言、运行时和扩展点 |
+| 维护 | 最新发布/提交、issue/PR 活动、关键人风险线索 |
+| 质量 | 测试、CI、示例、基准、文档和安全流程 |
+| 运维 | 打包、部署、配置、状态/恢复和遥测 |
+| 适配 | 延迟、数据、监管、安全和团队限制 |
+| 决策 | 采用、扩展、借鉴模式、仅调研或拒绝 |
 
-## Scoring
+## 评分
 
-Use scoring only to structure discussion, never to replace judgment. Rate each candidate 0-3 for functional fit, operational maturity, maintenance, security/license fit, performance fit, and extension cost. State the evidence behind each score.
+评分只用于组织讨论，不能取代判断。候选从功能匹配、运维成熟度、维护性、安全/许可证匹配、性能匹配和扩展成本六项按 0-3 分评分；每个分数旁写明证据。
 
-Reject or quarantine a candidate for absent/unclear licensing, archive-only status without a maintained fork, incompatible copyleft/commercial terms, unsafe credential handling, missing testability, or fundamentally mismatched market/execution assumptions.
+许可证缺失或不清晰、只有存档版本而没有维护 fork、copyleft/商业条款不兼容、凭据处理不安全、关键路径不可测试、或市场/执行假设根本不匹配时，拒绝或隔离该候选。
 
-## Trading-specific review
+## 交易专项审查
 
-Verify whether a project uses trades, L1, L2, or L3 data; supports partial fills and queue modeling; models latency; handles sessions/contracts; and distinguishes backtest from live execution. Crypto and equities projects often provide useful patterns but do not prove compatibility with Chinese futures exchange or CTP semantics.
+核验项目使用成交、L1、L2 还是 L3 数据；是否支持部分成交和排队建模；是否建模延迟；是否处理交易时段/合约；以及是否区分回测和实盘执行。加密货币和股票项目通常只能提供模式参考，不能证明兼容中国期货交易所或 CTP 语义。
