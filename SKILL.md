@@ -133,3 +133,14 @@ Search reference categories for event-driven trading engines, high-frequency bac
 - Read [architecture-output.md](references/architecture-output.md) for final architecture documents and method-level module design.
 - Run `scripts/research_repositories.py` for repeatable GitHub discovery, then inspect candidates manually.
 - Run `scripts/inspect_codebase.py <path>` for a deterministic local inventory before making architecture claims.
+
+## Release Handoff
+
+When the user asks to distribute this Skill, keep the release lifecycle explicit and
+repeatable: run the SkillHub optimizer's `scripts/prepare-skill-release.ps1`, verify
+the root-level `SKILL.md` in the ZIP, push the reviewed source to GitHub, then use an
+authenticated SkillHub session for upload and approval. Login, QR scanning, SMS
+codes, and passwords remain user-controlled; pause on the visible login page and
+resume only after authentication. After upload, distinguish `安全审核中`,
+`团队管理员审核中`, and `已发布`; do not claim completion from an upload toast
+alone.
