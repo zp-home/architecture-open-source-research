@@ -1,0 +1,67 @@
+name: Validate And Package Skill
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'SKILL.md'
+      - 'agents/**'
+      - 'references/**'
+      - 'scripts/**'
+      - 'publish-form.md'
+      - 'CHANGELOG.md'
+      - '.github/workflows/skill-release.yml'
+  pull_request:
+    paths:
+      - 'SKILL.md'
+      - 'agents/**'
+      - 'references/**'
+      - 'scripts/**'
+      - 'publish-form.md'
+      - 'CHANGELOG.md'
+      - '.github/workflows/skill-release.yml'
+
+permissions:
+  contents: read
+
+jobs:
+  validate-and-package:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Validate frontmatter and required files
+        shell: bash
+        run: |
+          test -f SKILL.md
+          python - <<'PY'
+          from pathlib import Path
+          text = Path('SKILL.md').read_text(encoding='utf-8')
+          assert text.startswith('---\n'), 'SKILL.md must start with YAML frontmatter'
+          front, _, body = text[4:].partition('\n---')
+          assert 'name:' in front and 'description:' in front
+          assert body.strip(), 'SKILL.md body must not be empty'
+          PY
+      - name: Build release ZIP
+        shell: bash
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          from zipfile import ZipFile, ZIP_DEFLATED
+          root = Path('.')
+          allowed = ['SKILL.md', 'agents', 'references', 'scripts', 'publish-form.md', 'CHANGELOG.md']
+          files = []
+          for entry in allowed:
+              p = root / entry
+              if p.is_file(): files.append(p)
+              elif p.is_dir(): files.extend(x for x in p.rglob('*') if x.is_file())
+          assert any(str(x) == 'SKILL.md' for x in files)
+          out = Path('skill-release.zip')
+          with ZipFile(out, 'w', ZIP_DEFLATED) as z:
+              for p in files: z.write(p, p.as_posix())
+          with ZipFile(out) as z: assert 'SKILL.md' in z.namelist()
+          print(f'created {out} with {len(files)} files')
+          PY
+      - uses: actions/upload-artifact@v4
+        with:
+          name: architecture-open-source-research-${{ github.sha }}
+          path: skill-release.zip

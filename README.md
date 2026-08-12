@@ -8,6 +8,11 @@ The skill researches public repositories, inspects existing codebases, records
 license and maintenance evidence, compares reuse boundaries, and produces an
 implementation-ready architecture with validation and promotion gates.
 
+Every push that changes the Skill-owned files runs the GitHub Action in
+`.github/workflows/skill-release.yml`. It validates the manifest and publishes a
+ZIP artifact. SkillHub upload and administrator approval remain an authenticated
+human-controlled step because the platform requires a logged-in web session.
+
 ## Contents
 
 - `SKILL.md` - skill instructions
