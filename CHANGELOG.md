@@ -1,5 +1,11 @@
 # Changelog
 
+## 1.1.3 - 2026-08-13
+
+- Added Chinese quick-start guidance, a concrete architecture-selection example, and a troubleshooting reference for new users.
+- Added GitHub-to-Gitee discovery fallback and actionable Chinese network, rate-limit, and authentication errors.
+- Clarified how to record source availability separately from repository quality.
+
 ## 1.1.2 - 2026-08-13
 
 - Added a deterministic GitHub release orchestration command.
