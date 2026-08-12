@@ -1,0 +1,4 @@
+interface:
+  display_name: "开源架构研究设计"
+  short_description: "自动检索并评估开源项目，生成可落地的系统架构设计方案"
+  default_prompt: "Use $architecture-open-source-research to design this system architecture from vetted open-source projects."
