@@ -1,5 +1,11 @@
 # Changelog
 
+## 1.1.2 - 2026-08-13
+
+- Added a deterministic GitHub release orchestration command.
+- Restricted repository synchronization to declared skill-owned files.
+- Added explicit review-only and push controls for repeatable releases.
+
 ## 1.1.1 - 2026-08-13
 
 - Added a repeatable release handoff for validation, packaging, upload, and review.
