@@ -1,5 +1,11 @@
 # Changelog
 
+## 1.1.1 - 2026-08-13
+
+- Added a repeatable release handoff for validation, packaging, upload, and review.
+- Added a human-controlled login pause and explicit SkillHub state transitions.
+- Documented Windows UTF-8 validation compatibility.
+
 ## 1.1.0 - 2026-08-13
 
 - Added deterministic local codebase inventory via `scripts/inspect_codebase.py`.
